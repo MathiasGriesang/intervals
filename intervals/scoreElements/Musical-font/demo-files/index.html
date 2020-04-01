@@ -1,0 +1,198 @@
+<html>
+<head>
+<meta charset="utf-8"/>
+<style type="text/css">
+/* @font-face kit by Fonts2u (https://fonts2u.com) */ @font-face {font-family:"MusicalSymbols";src:url("MUSICAL.eot?") format("eot"),url("MUSICAL.woff") format("woff"),url("MUSICAL.ttf") format("truetype"),url("MUSICAL.svg#MusicalSymbolsNormal") format("svg");font-weight:normal;font-style:normal;}
+
+.symbol{font-family:"MusicalSymbols";font-size: 37pt;}
+.noteHolder,.otherHolder{position:relative;left:55px;top:calc(263px - 59px);z-index: -10;opacity:0;width:20px;height:20px;}
+.pauta{width:130px;float: left;height:410px;overflow: hidden;}
+#partitura{padding-left:50px;padding-top:50px;}
+.line,.linex{
+  width:100%;
+  height:1px;
+  background-color:black;
+}
+.space{
+  width:100%;
+  height:1px;
+}
+.l-e{
+  padding-top:4px;
+  padding-bottom:4px;
+  width:100%;
+  cursor:cell;
+}
+.sup>.line,.sup>.linex{
+  margin-left:52.5px;
+  width:25px;
+  background-color:transparent;
+}
+.l-e:hover{
+  background-color:rgba(255,144,23,0.2);
+  border-radius: 25px;
+}
+</style>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<div id="partitura"></div><div style="padding-top:calc(50px + 250px);float: left"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
+
+<script type="text/javascript">
+//[null,[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0]]
+var cont=[];
+var chords=[];
+createPauta(1);
+createPauta(2);
+function createPauta(p){
+  cont[p]=-1;
+  $("#partitura").append("<div id='pauta"+p+"' class='pauta'></div>");
+  $("#pauta"+p).append("<div class='noteHolder'><div class='symbol note' style='position:relative;top:-60px'>w</div></div>");
+  var d=[];
+  d[0]="<div class='l-e ";
+  d[1]="";//sup
+  d[2]="";//l ou e
+  d[3]="";//si ou ss
+  d[4]=9;//numero
+  d[5]="' id='";
+  d[6]="'><div class='";
+  d[7]="";//linha ou espaço
+  d[8]="'></div></div>";
+  chords[p]=[];
+  for (var x = -21; x <= 21; x++) {
+    chords[p][x+21]=0;
+    if(x<=-5){
+      d[1]="sup ";
+      d[3]="ss";
+      if(Math.abs(x) % 2 == 0){
+        d[4]--;
+        d[2]="l";
+        d[7]="line";
+      }else{
+        d[2]="e";
+        d[7]="space";
+      }
+    }else{
+      if (x<=4) {
+        if(Math.abs(x) % 2 != 0){
+          d[4]--;
+          d[2]="e";
+          d[7]="space";
+        }else{
+          d[2]="l";
+          d[7]="line";
+        }
+        if(x==-4){d[4]=5;}  
+        d[1]="";
+        d[3]="";
+      }else{
+        if(Math.abs(x) % 2 != 0){
+          d[4]++;  
+          d[2]="e";
+          d[7]="space";
+        }else{
+          d[2]="l";
+          d[7]="line";
+        }
+        if(x==5){d[4]=1;}
+        d[1]="sup ";
+        d[3]="si";
+      }
+    }
+    $("#pauta"+p).append(d[0]+d[1]+d[2]+d[3]+d[4]+d[5]+p+"p"+x+d[6]+d[7]+d[8]);
+  }
+}
+function aleatorio(inferior,superior){
+   var numPossibilidades = superior - inferior
+   var aleat = Math.random() * numPossibilidades
+   aleat = Math.floor(aleat)
+   return parseInt(inferior) + aleat
+} 
+function dar_cor_aleatoria(){
+  var hexadecimal = new Array("0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F")
+  var cor_aleatoria = "#";
+  for (i=0;i<6;i++){
+    var posarray = aleatorio(0,hexadecimal.length)
+    cor_aleatoria += hexadecimal[posarray]
+  }
+  return cor_aleatoria
+} 
+
+ $("#partitura").on('mouseenter', '.l-e', function(event) {
+  var str=$(this).attr('class');
+  if(str.search("sup")){
+    var n=(str.substring(11, str.length));
+    var i;
+    switch(str.substring(8, 9)){
+      case "e":i=n-1;break;
+      case "l":i=n;break;
+    }
+    for (var x=1;x<=i; x++) {
+      $(this).parent().find(".ls"+str.substring(10, 11)+x+" > .line").css("background-color","black");
+    }
+  }
+  var id = $(this).attr("id");
+  $(this).parent().find('.noteHolder').find('.note').parent().css('opacity','1').css('top',''+((263-59)+9*(id.substring(id.indexOf("p")+1, id.length)))+'px');
+}).on('mouseleave', '.l-e', function(event) {
+  var str=$(this).attr('class');
+  if(str.search("sup")){
+    $(this).parent().find(".sup > .line").css("background-color","transparent");
+  }
+  $(this).parent().find('.noteHolder').find('.note').parent().css('opacity','0');
+}).on('click', '.l-e', function(event) {
+  var id=$(this).attr("id").substring(2,$(this).attr("id").length);
+  var p=Number($(this).parent().attr("id").replace("pauta", ""));
+  $(this).parent().append("<div style='color:"+dar_cor_aleatoria()+";z-index:-11;opacity:1;top:"+(-203-20*(++cont[p])+(Number($(this).parent().find('.noteHolder').find('.note').parent().css('opacity','1').css('top').replace("px", ""))-(263-59)))+"px' class='otherHolder fx"+id+"'><div class='symbol note' style='position:relative;top:-60px'>w</div></div>").ready(function () {
+
+  chords[p][21-id]=1;
+  alert(21-id);
+
+  for (var x = -21; x <= 21; x++) {
+    if(chords[p][x+21]!=0){
+      try {
+        if(chords[p][x+21+1]==chords[p][x+21]){
+          switch(chords[p][x+21]){
+            case 1:chords[p][x+21+1]=2;break;
+            case 2:chords[p][x+21+1]=1;break;
+          }
+        }
+      }catch (e) {
+        
+      }
+    }
+  }
+  //alert(JSON.stringify(chords));
+  alert($(this).parent().attr('id'));
+  for (var x = -21; x <= 21; x++) {
+    
+    if(chords[p][x+21]!=0){
+      //alert(x+"\n"+(x+21)+"\n"+chords[p][x+21]+"\n"+".fx"+x);
+      //alert($(this).attr('id'));
+      //alert(
+        //.find(".fx"+x).attr("class"));
+    }
+    
+    var dependency="55px";
+    if(chords[p][x+21]==1){
+      dependency="55px";
+    }else if(chords[p][x+21]==2){
+      dependency="65px";
+    }
+
+  } });
+  var str=$(this).attr('class');
+  if(str.search("sup")){
+    var n=(str.substring(11, str.length));
+    var i;
+    switch(str.substring(8, 9)){
+      case "e":i=n-1;break;
+      case "l":i=n;break;
+    }
+    for (var x=1;x<=i; x++) {
+      $(this).parent().find(".ls"+str.substring(10, 11)+x+" > .line").css("background-color","black").removeClass('line').addClass('linex');
+    }
+  }
+});
+</script>
+</body>
+</html>

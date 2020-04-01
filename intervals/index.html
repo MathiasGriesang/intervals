@@ -1,0 +1,122 @@
+<html>
+<head>
+	<title>Intervals</title>
+	<meta charset="utf-8"/>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="scoreElements/Musical-font/musical.css">
+  <link rel="stylesheet" type="text/css" href="scoreElements/score.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="menuElements/menu.css">
+</head>
+<body style="overflow: hidden;">
+<div class="nav">
+  <div class="section">
+    <span style='opacity:1' ><a onmouseover="setStatus('Mathias Website')" onmouseout="setStatus('Barra de opções')" href='http://mathias.rf.gd/home.php'><img src='http://mathias.rf.gd/files/assets/logo_white.png' height='15px'/></a></span>
+    <span>
+      <button onmouseover="setStatus('Recomeçar')" onmouseout="setStatus('Barra de opções')"><i style="font-size: 14pt" class="fa fa-refresh" aria-hidden="true"></i>&nbsp;&nbsp;Restart</button>
+    </span>
+  </div>
+  <div class="section" style="color:  #B33032">
+    <div class="i">&nbsp;|&nbsp;</div>
+  </div>
+  <div class="section sa">
+    <span id="mouse1" class="selected" onmouseover="setStatus('Inserir')" onmouseout="setStatus('Barra de opções')"><div class="symbol" style="margin-top: -5px;font-size: 28pt">w</div></span>
+    <span id="mouse2" onmouseover="setStatus('Selecionar')" onmouseout="setStatus('Barra de opções')"><i style="font-size: 14pt" class="fa fa-mouse-pointer" aria-hidden="true"></i></span>
+    <span id="mouse3" onmouseover="setStatus('Apagar')" onmouseout="setStatus('Barra de opções')"><i style="font-size: 14pt" class="fa fa-eraser" aria-hidden="true"></i></span>
+  </div>
+  <div class="section" style="color:  #B33032">
+    <div class="i">&nbsp;|&nbsp;</div>
+  </div>
+  <div class="section sa" id="acidentes">
+    <span id='oc1' onmouseover="setStatus('Acidente ocorrente <div class=\'symbol\' style=\'position:relative;bottom: 26px;left:165px;font-size:32px\'>‹</div>');" onmouseout="setStatus('Barra de opções')">
+      <div class="symbol" style="margin-top: -10px;">‹</div>
+    </span>
+    <span id='oc2' onmouseover="setStatus('Acidente ocorrente <div class=\'symbol\' style=\'position:relative;bottom: 27px;left:165px;font-size:32px\'>#</div>');" onmouseout="setStatus('Barra de opções')">
+      <div class="symbol" style="margin-top: -10px;">#</div>
+    </span>
+    <span id='oc3' class="selected" onmouseover="setStatus('Acidente ocorrente <div class=\'symbol\' style=\'position:relative;bottom: 27px;left:165px;font-size:32px\'>n</div>');" onmouseout="setStatus('Barra de opções')">
+      <div class="symbol" style="margin-top: -10px;">n</div>
+    </span>
+    <span id='oc4' onmouseover="setStatus('Acidente ocorrente <div class=\'symbol\' style=\'position:relative;bottom: 23px;left:165px;font-size:32px\'>b</div>');" onmouseout="setStatus('Barra de opções')">
+      <div class="symbol">b</div>
+    </span>
+    <span id='oc5' onmouseover="setStatus('Acidente ocorrente <div class=\'symbol\' style=\'position:relative;bottom: 23px;left:165px;font-size:32px\'>bb</div>');" onmouseout="setStatus('Barra de opções')">
+      <div class="symbol">bb</div>
+    </span>
+  </div>
+  <!--div class="section" style="color: #B33032">
+    <div class="i">&nbsp;|&nbsp;</div>
+  </div>
+  <div class="section sa">
+    <span class="selected" onclick="vozes=1;">1</span>
+    <span onclick="vozes=2;">2</span>
+    <span onclick="vozes=3;">3</span>
+    <span onclick="vozes=4;">4</span>
+    <span onclick="vozes=5;">5</span>
+  </div-->
+  <div class="section right">
+    <p id='sy2'>Armadura</p>
+    <p>
+      <span><div class="symbol" id='sy1' onmouseover="setStatus('Armadura de clave | Alteração')" onmouseout="setStatus('Barra de opções')"><div id="sy">#</div></div></span>
+      <span style="opacity: 1"><input type="text"  onmouseover="setStatus('Armadura de clave | Quantidade de alterações')" onmouseout="setStatus('Barra de opções')"></span>
+      <span id="add1" onmouseover="setStatus('Armadura de clave | Quantidade de alterações | +')" onmouseout="setStatus('Barra de opções')">+</span>
+      <span id="add-1" onmouseover="setStatus('Armadura de clave | Quantidade de alterações| -')" onmouseout="setStatus('Barra de opções')">-</span>
+    </p>
+  </div>
+  <div class="section right" style="color: #B33032;"><div class="i">&nbsp;|&nbsp;</div></div>
+  <div class="section right">
+    <p id='syb2'>Clave</p>
+    <p>
+      <span>
+        <div class="symbol" id='syb1' onmouseover="setStatus('Clave')" onmouseout="setStatus('Barra de opções')"><div id="syb">&</div></div>
+      </span>
+      <span style="opacity: 1" onmouseout="setStatus('Barra de opções')">
+        <div id='das' class="Cwhite-compas" style="width: 50px;" >
+          <div class="a" onclick="changeClavePosition(5);" onmouseover="setStatus('Clave | Linha 5')"></div>
+          <div class="b" onmouseover="setStatus('Clave | Selecione a Linha')"></div>
+          <div id='clavFl' class="a" onclick="changeClavePosition(4);" onmouseover="setStatus('Clave | Linha 4')"></div>
+          <div class="b" onmouseover="setStatus('Clave | Selecione a Linha')"></div>
+          <div id='clavCl' class="a" onclick="changeClavePosition(3);" onmouseover="setStatus('Clave | Linha 3')"></div>
+          <div class="b" onmouseover="setStatus('Clave | Selecione a Linha')"></div>
+          <div id='clavGl' class="a" onclick="changeClavePosition(2);" style="background-color: #5EFF8A;" onmouseover="setStatus('Clave | Linha 2')"></div>
+          <div class="b" onmouseover="setStatus('Clave | Selecione a Linha')"></div>
+          <div class="a" onclick="changeClavePosition(1);" onmouseover="setStatus('Clave | Linha 1')"></div>
+        </div>
+      </span>
+    </p>
+  </div>
+</div>
+
+<div style="width: 100%;height: 100%;" onmouseover="setStatus('Partitura')" onmouseout="setStatus('Barra de opções')">
+<div id='part1' style="height: 100%;width: 100%;">
+  <div id='part2'>
+    <div id="partitura"><div style="float: left;width: 100px;">&nbsp;</div></div>
+  </div>
+  <div  id='part3'>
+    <div style="padding-top:165px;" id='resultado'>
+    </div>
+  </div>
+</div>
+</div>
+<div style="height: 33px;right: 76px;" id="escolha2" hidden>
+  <div class="symbol mm1">b</div>
+  <div class="symbol mm2" hidden>#</div>
+  <div id='es2' onmouseover="setStatus('Armadura de clave | Alterar Alteração')" onmouseout="setStatus('Barra de opções')"></div>
+</div>
+<div style="height: 66px;right: 214px" id="escolha1" hidden>
+  <div id="s1" class="symbol tyt">&</div>
+  <div id="s2" class="symbol m1">?</div>
+  <div id="s3" class="symbol m2">B</div>
+  <div id='es1_1' onmouseover="setStatus('Alterar Clave')" onmouseout="setStatus('Barra de opções')"></div>
+  <div id='es1_2' onmouseover="setStatus('Alterar Clave')" onmouseout="setStatus('Barra de opções')"></div>
+</div>
+<div id='disab' onmouseover="setStatus('Alterações')" onmouseout="setStatus('Barra de opções')"></div>
+<div id='status' onmouseover="setStatus('Barra de status')" onmouseout="setStatus('Barra de status')"><div><span class="i">Bem vindo ao Intervals</span></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="result.js"></script>
+<script type="text/javascript" src="create.js"></script>
+<script type="text/javascript" src="click.js"></script>
+</body>
+<bottom>Sua tela é muito pequena</bottom>
+</html>

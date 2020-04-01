@@ -1,0 +1,16 @@
+body{
+	padding: 0!important;border:0;margin: 0;height: 100%;width: 100%;background-color: #ddd
+}
+#part1{position: fixed;top:calc(50% - 205px);width: 100%}
+#part2{float: left;width: 50%;text-align: center;}
+#part3{float: left;width: 50%;text-align: center;}
+#status{width: 100%;height:33px;background-color: #ABABAB;color: #000;position: fixed;bottom: 0}
+#status > div{display: table;float:left;height: 100%;}
+#status > div > span{cursor: default;position:relative;bottom:2px}
+.i{font-size: 15px}
+bottom{position:fixed;top:calc(50% - 9.2px);left:calc(50% - 102px);display:none}
+@media (min-height: 0px) and (max-height: 518px) , (min-width: 0px) and (max-width: 856px){
+ body *:not(bottom){display:none;}
+ bottom{display:block}
+}
+

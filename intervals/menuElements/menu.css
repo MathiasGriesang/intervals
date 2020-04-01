@@ -1,0 +1,48 @@
+.nav{
+	width: 100%;height:53px;background-color: #CC4B4E;color: #fff;
+}
+.nav > .section{
+	display: table;float:left;height: 100%;
+}
+.nav > .section.right{
+	float: right;
+}
+.nav > .section > span,.i{
+  display: table-cell;
+  vertical-align:middle;
+  padding: 10px;
+  cursor: pointer;
+}
+.nav > .section> span.selected{
+  color: #5EFF8A
+}
+.nav > .section > span:hover{
+ fill: #32E854;
+ opacity: 0.8;
+}
+input{
+	height: 26.86px;width:25px;background-color: #ddd;border:0;text-align: center;margin-top: 10px;
+}
+#acidentes > span > div{font-size: 26pt!important;}
+.tyt{display: none}
+#escolha1,#escolha2{position: absolute;top: 53px;width: 33px;background-color: #B33032;color: #fff;-webkit-box-shadow: -1px 2px 16px 0px rgba(0,0,0,0.33);-moz-box-shadow: -1px 2px 16px 0px rgba(0,0,0,0.33);box-shadow: -1px 2px 16px 0px rgba(0,0,0,0.33);}
+.mm1{margin-top: 6px}
+.mm2{margin-top: 4px}
+.mm1,.mm2{font-size: 18pt;text-align: center;}
+#es2,#es1_1,#es1_2{opacity: 0;width: 100%;height: 33px;position: relative;left: 0;cursor: pointer;}
+#es2{top:-34px;}
+#es1_1,#es1_2{top:-66px;}
+#s1,#s2,#s3{font-size: 11pt;text-align: center;margin-top: 16px;}
+#s1{margin-top: 15px;}
+#add1{text-align: left;padding-left: 0px;position: relative;top:4px;right: 5px;padding: 0px;}
+#add-1{text-align: left;padding-right: 2px;position: relative;top:4px;right: 65px;padding: 0px;padding-left: 4px;padding-right: 4px}
+#syb{position: relative;top:14px}
+#syb1{margin-top: -14px;font-size: 10pt;margin-left: 0px;text-align: center;position: relative;right: 10px;background-color: #B33032;height: 30px;right: -0px;cursor:pointer;}
+#sy{position: relative;top:1.8px}
+#sy1{margin-top: -14px;font-size: 18pt;margin-left: 16px;text-align: center;position: relative;right: 10px;background-color: #B33032;cursor:pointer;}
+button{margin-top: 3px;height: 26.86px;background-color: #ddd;border:0;cursor: pointer;}
+#syb2,#sy2{font-size: 10px;margin-top: 0px;text-align: center;position: relative;}
+#syb2{margin-right: 0px;top:-3px;}
+#sy2{margin-right: -10px;top:-3px;left: 22px}
+#disab{height: 56px;width:175px;position:fixed;left: calc(285px + 103.7px);top:0px;opacity: 0;background-color: #000;z-index: 50}
+#acidentes{opacity: 0.5}
