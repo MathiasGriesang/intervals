@@ -102,9 +102,9 @@ function createPauta(p){
 function identificaAcidentes(){
 	var defaultValue=clave;
 	switch(clave){
-		case 1:defaultValue=2;break;//f
-		case 2:defaultValue=4;break;//f
-		case 3:defaultValue=6;break;//f
+		case 1:defaultValue=2;break;//g
+		case 2:defaultValue=3;break;//f
+		case 3:defaultValue=6;break;//c
 	}
 	if(armaAcident=="b"){
 		defaultValue+=3;//b
@@ -217,7 +217,7 @@ function changeArmadura(){
 		case 2:
 			if(armaAcident=="#"){
 				switch(lineClave){
-					case 1:aP[1]=-100;aP[2]=-28;aP[3]=-92;aP[4]=-28;aP[5]=-28;aP[6]=-92;aP[7]=-27;break;//mesma da clave de sol na 2 linha
+					case 1:aP[1]=-91;aP[2]=-28;aP[3]=-92;aP[4]=-28;aP[5]=-28;aP[6]=-92;aP[7]=-27;break;//mesma da clave de dó 3 linha
 					case 2:aP[1]=-46;aP[2]=-91;aP[3]=-29;aP[4]=-91;aP[5]=-28;aP[6]=-91;aP[7]=-28;break;//mesma da clave de dó na 4 linha
 					case 3:aP[1]=-64;aP[2]=-91;aP[3]=-29;aP[4]=-91;aP[5]=-28;aP[6]=-28;aP[7]=-91;break;//mesma da clave de dó na 5 linha
 					case 4:aP[1]=-82;aP[2]=-28;aP[3]=-92;aP[4]=-28;aP[5]=-28;aP[6]=-92;aP[7]=-27;break;
@@ -225,7 +225,7 @@ function changeArmadura(){
 				}
 			}else if(armaAcident=="b"){
 				switch(lineClave){
-					case 1:aP[1]=-63;aP[2]=-83;aP[3]=-20;aP[4]=-81;aP[5]=-19;aP[6]=-83;aP[7]=-19;break;//mesma da clave de sol na 2 linha
+					case 1:aP[1]=-55;aP[2]=-81;aP[3]=-20;aP[4]=-83;aP[5]=-19;aP[6]=-81;aP[7]=-19;break;//mesma da clave de dó 3 linha
 					case 2:aP[1]=-73;aP[2]=-81;aP[3]=-20;aP[4]=-83;aP[5]=-19;aP[6]=-81;aP[7]=-19;break;//mesma da clave de dó na 4 linha
 					case 3:aP[1]=-91;aP[2]=-19;aP[3]=-82;aP[4]=-19;aP[5]=-83;aP[6]=-19;aP[7]=-81;break;//mesma da clave de dó na 5 linha
 					case 4:aP[1]=-45;aP[2]=-83;aP[3]=-20;aP[4]=-81;aP[5]=-19;aP[6]=-83;aP[7]=-19;break;

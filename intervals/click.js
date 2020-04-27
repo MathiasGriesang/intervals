@@ -5,10 +5,12 @@ $(document).ready(function() {
 		/*setTimeout(function(){ 
 			selecOp1=!selecOp1;
 		}, 10);*/
-		if(nselId!="nill"){
+		/*setTimeout(function(){
+  		if(nselId!="nill"){
 			$(this).find(".otherHolder").css("color","#000");
 			nselId="nill";
 		}
+  		}, 5);*/
 		resultado();
   });
 	$("input[type='text']").on('click', function(event) {
